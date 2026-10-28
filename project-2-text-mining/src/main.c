@@ -235,3 +235,252 @@ static int load_sample(TextAnalysis *analysis)
     }
     return 1;
 }
+
+/* All menu operations return 1 to continue, or 0 when input ends. */
+static int count_words(TextAnalysis *analysis)
+{
+    printf("Total words: %zu\nDistinct words: %zu\n",
+           analysis->total, analysis->distinct);
+    return 1;
+}
+
+static int longest_word(TextAnalysis *analysis)
+{
+    if (analysis->distinct == 0) {
+        puts("No words available for a longest word.");
+        return 1;
+    }
+    size_t longest = 0;
+    for (size_t i = 0; i < analysis->distinct; ++i) {
+        size_t length = strlen(analysis->words[i].name);
+        if (length > longest) {
+            longest = length;
+        }
+    }
+    printf("Longest word(s), %zu letters:\n", longest);
+    for (size_t i = 0; i < analysis->distinct; ++i) {
+        if (strlen(analysis->words[i].name) == longest) {
+            puts(analysis->words[i].name);
+        }
+    }
+    return 1;
+}
+
+static int most_frequent(TextAnalysis *analysis)
+{
+    if (analysis->distinct == 0) {
+        puts("No words available for a most frequent word.");
+        return 1;
+    }
+    size_t highest = 0;
+    for (size_t i = 0; i < analysis->distinct; ++i) {
+        if (analysis->words[i].count > highest) {
+            highest = analysis->words[i].count;
+        }
+    }
+    printf("Most frequent word(s), %zu occurrence(s) each:\n", highest);
+    for (size_t i = 0; i < analysis->distinct; ++i) {
+        if (analysis->words[i].count == highest) {
+            puts(analysis->words[i].name);
+        }
+    }
+    return 1;
+}
+
+static int display_word_statistics(TextAnalysis *analysis)
+{
+    if (analysis->distinct == 0) {
+        puts("No words found in the current text.");
+        return 1;
+    }
+    printf("\n%-39s | %s\n", "Word", "Frequency");
+    for (size_t i = 0; i < analysis->distinct; ++i) {
+        printf("%-39s | %zu\n", analysis->words[i].name, analysis->words[i].count);
+    }
+    return 1;
+}
+
+static int compare_alphabetically(const void *left, const void *right)
+{
+    const WordStat *a = left;
+    const WordStat *b = right;
+    return strcmp(a->name, b->name);
+}
+
+static int compare_frequency(const void *left, const void *right)
+{
+    const WordStat *a = left;
+    const WordStat *b = right;
+    if (a->count == b->count) {
+        return strcmp(a->name, b->name);
+    }
+    return (a->count < b->count) - (a->count > b->count);
+}
+
+static int sort_word_statistics(TextAnalysis *analysis)
+{
+    if (analysis->distinct == 0) {
+        puts("No word statistics to sort.");
+        return 1;
+    }
+    int choice;
+    if (!read_choice("Sort by 1 = Alphabetical, 2 = Frequency (highest first): ",
+                     2, &choice)) {
+        return 0;
+    }
+    int (*compare)(const void *, const void *) =
+        choice == 1 ? compare_alphabetically : compare_frequency;
+    qsort(analysis->words, analysis->distinct, sizeof(WordStat), compare);
+    return display_word_statistics(analysis);
+}
+
+static int search_word(TextAnalysis *analysis)
+{
+    char word[40];
+    if (!read_line("Word to search for (letters only): ", word, sizeof(word))) {
+        return 0;
+    }
+    for (char *current = word; *current != '\0'; ++current) {
+        if (!is_letter(*current)) {
+            puts("Enter one word containing only letters A-Z or a-z.");
+            return 1;
+        }
+        if (*current >= 'A' && *current <= 'Z') {
+            *current = (char)(*current - 'A' + 'a');
+        }
+    }
+    for (size_t i = 0; i < analysis->distinct; ++i) {
+        if (strcmp(analysis->words[i].name, word) == 0) {
+            printf("%s: %zu occurrence(s)\n", word, analysis->words[i].count);
+            return 1;
+        }
+    }
+    printf("%s: 0 occurrences\n", word);
+    return 1;
+}
+
+static int lexical_diversity(TextAnalysis *analysis)
+{
+    puts("\nCustom Analysis: Lexical Diversity Score");
+    puts("Formula: distinct words / total words.");
+    puts("Higher scores indicate more varied vocabulary in this passage;");
+    puts("repeating words reduces the score. Text length also affects the score.");
+    if (analysis->total == 0) {
+        puts("Lexical Diversity Score: N/A (no words).");
+    } else {
+        double score = (double)analysis->distinct / analysis->total;
+        printf("Lexical Diversity Score: %.4f (%.2f%%)\n", score, score * 100.0);
+    }
+    return 1;
+}
+
+static int generate_text_summary(TextAnalysis *analysis)
+{
+    puts("\nText Summary");
+    printf("Source: %s\n", analysis->source);
+    count_words(analysis);
+    if (analysis->total == 0) {
+        puts("Average word length: N/A");
+    } else {
+        double letters = 0.0;
+        for (size_t i = 0; i < analysis->distinct; ++i) {
+            letters += (double)strlen(analysis->words[i].name) *
+                       analysis->words[i].count;
+        }
+        printf("Average word length: %.2f letters\n", letters / analysis->total);
+    }
+    longest_word(analysis);
+    most_frequent(analysis);
+    return lexical_diversity(analysis);
+}
+
+static int inspect_memory(TextAnalysis *analysis)
+{
+    puts("\nMemory Inspection");
+    printf("Text buffer: %p (start of the stored paragraph)\n",
+           (void *)analysis->text);
+    printf("Word statistics array: %p (start of the word records)\n",
+           (void *)analysis->words);
+    if (analysis->distinct == 0) {
+        puts("Selected word-stat entry: N/A (no word records).");
+    } else {
+        WordStat *selected = analysis->words + analysis->distinct / 2;
+        printf("Selected word-stat entry: %p (record for '%s')\n",
+               (void *)selected, selected->name);
+    }
+    return 1;
+}
+
+static int enter_text(TextAnalysis *analysis)
+{
+    char source[256];
+    if (!read_line("Source title and author/publication: ", source, sizeof(source))) {
+        return 0;
+    }
+    puts("Enter or paste your paragraph. Finish with an empty line:");
+    fflush(stdout);
+    char *text = read_text(stdin, 1);
+    if (text == NULL) {
+        return 0;
+    }
+    if (*text == '\0') {
+        puts("Empty input. The current paragraph is kept.");
+        free(text);
+        return 1;
+    }
+    if (!analyse_text(analysis, text, source)) {
+        free(text);
+        puts("The current paragraph and statistics are kept.");
+        return 1;
+    }
+    printf("\nSource: %s\nNew text loaded: %zu words.\n",
+           analysis->source, analysis->total);
+    return 1;
+}
+
+int main(void)
+{
+    char student_id[80];
+    if (!read_line("Your student ID: ", student_id, sizeof(student_id))) {
+        return EXIT_SUCCESS;
+    }
+    TextAnalysis analysis = {0};
+    if (!load_sample(&analysis)) {
+        free(analysis.text);
+        free(analysis.words);
+        return EXIT_FAILURE;
+    }
+
+    printf("\nStudent ID: %s\n", student_id);
+    puts("Project: Dynamic Text Mining and Linguistic Pattern Analyzer");
+    printf("Source: %s\n", analysis.source);
+    puts("Custom Analysis: Lexical Diversity Score");
+    puts("\nWord rules: words are sequences of English letters A-Z or a-z.");
+    puts("Case is ignored. Punctuation, apostrophes, hyphens, numbers, and");
+    puts("whitespace separate words: 'don't' becomes 'don' and 't';");
+    puts("'thirty-nine' becomes 'thirty' and 'nine'. Other characters separate words.");
+    puts("Words longer than 39 letters reject the entire new paragraph.");
+    printf("\nLoaded paragraph (%zu words):\n%s\n", analysis.total, analysis.text);
+
+    int (*operations[])(TextAnalysis *) = {
+        count_words, longest_word, most_frequent, display_word_statistics,
+        sort_word_statistics, search_word, generate_text_summary,
+        lexical_diversity, inspect_memory, enter_text
+    };
+    while (1) {
+        puts("\n1. Count words\n2. Find longest word\n3. Find most frequent word\n"
+             "4. Display word statistics\n5. Sort word statistics\n6. Search word\n"
+             "7. Display text summary\n8. Lexical Diversity Score\n"
+             "9. Inspect memory addresses\n10. Enter a new paragraph\n11. Exit");
+        int choice;
+        if (!read_choice("Choice: ", 11, &choice) || choice == 11) {
+            break;
+        }
+        if (!operations[choice - 1](&analysis)) {
+            break;
+        }
+    }
+    free(analysis.text);
+    free(analysis.words);
+    return EXIT_SUCCESS;
+}
