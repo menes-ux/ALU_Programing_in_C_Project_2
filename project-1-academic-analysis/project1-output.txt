@@ -1,0 +1,224 @@
+$ ./project1_output 
+Your student ID (for the output header): 2005
+
+Student ID: 2005
+Project: Dynamic Academic Performance and Risk Analysis Engine
+Custom Analysis: Academic Risk Classification
+Initialization complete: 12 student records loaded.
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 1
+Student ID: 2006
+Full name: Moutiath Djobosso
+Course: Animal studies 
+Grade (0-100): 67
+Student added successfully. Total records: 13
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 2
+
+ID         | Full name                 | Course                    |  Grade
+1001       | Amara Niyonsaba           | Programming in C          |  84.00
+1002       | Daniel Okello             | Mathematics               |  72.50
+1003       | Grace Mukamana            | Programming in C          |  91.00
+1004       | Samuel Mensah             | Statistics                |  48.00
+1005       | Aisha Kamara              | Mathematics               |  66.00
+1006       | Eric Habimana             | Programming in C          |  55.50
+1007       | Lydia Achieng             | Statistics                |  78.00
+1008       | Noah Dlamini              | Mathematics               |  39.00
+1009       | Fatima Diallo             | Programming in C          |  87.50
+1010       | Peter Mutesa              | Statistics                |  60.00
+1011       | Zara Ncube                | Mathematics               |  95.00
+1012       | Isaac Adeyemi             | Programming in C          |  50.00
+2006       | Moutiath Djobosso         | Animal studies            |  67.00
+Total records: 13
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 3
+Sort by 1 = Grade, 2 = Name, 3 = ID: 1
+Sorting by grade, highest first.
+
+ID         | Full name                 | Course                    |  Grade
+1011       | Zara Ncube                | Mathematics               |  95.00
+1003       | Grace Mukamana            | Programming in C          |  91.00
+1009       | Fatima Diallo             | Programming in C          |  87.50
+1001       | Amara Niyonsaba           | Programming in C          |  84.00
+1007       | Lydia Achieng             | Statistics                |  78.00
+1002       | Daniel Okello             | Mathematics               |  72.50
+2006       | Moutiath Djobosso         | Animal studies            |  67.00
+1005       | Aisha Kamara              | Mathematics               |  66.00
+1010       | Peter Mutesa              | Statistics                |  60.00
+1006       | Eric Habimana             | Programming in C          |  55.50
+1012       | Isaac Adeyemi             | Programming in C          |  50.00
+1004       | Samuel Mensah             | Statistics                |  48.00
+1008       | Noah Dlamini              | Mathematics               |  39.00
+Total records: 13
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 4
+Average grade: 68.73
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 5
+Top-performing students (including ties):
+
+ID         | Full name                 | Course                    |  Grade
+1011       | Zara Ncube                | Mathematics               |  95.00
+Total records: 1
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 6
+Search by 1 = ID, 2 = Full name: 1
+Student ID: 2006
+
+ID         | Full name                 | Course                    |  Grade
+2006       | Moutiath Djobosso         | Animal studies            |  67.00
+Total records: 1
+Matches found: 1
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 7
+Student ID to remove: 2006
+Student 2006 removed. Total records: 12
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 8
+
+Custom Analysis: Academic Risk Classification
+Purpose: show grade distribution and identify students needing support.
+At Risk: 0 <= grade < 50; Needs Improvement: 50 <= grade < 60;
+Satisfactory: 60 <= grade < 80; Excellent: 80 <= grade <= 100.
+These thresholds are project rules, not official university grades.
+Category share (%) = category count / total records * 100.
+Students below 60 are flagged for academic support.
+At Risk           : 2 (16.67%)
+Needs Improvement : 2 (16.67%)
+Satisfactory      : 4 (33.33%)
+Excellent         : 4 (33.33%)
+Students needing academic support: 4
+Support: ID 1006 | Eric Habimana | Grade 55.50 | Needs Improvement
+Support: ID 1012 | Isaac Adeyemi | Grade 50.00 | Needs Improvement
+Support: ID 1004 | Samuel Mensah | Grade 48.00 | At Risk
+Support: ID 1008 | Noah Dlamini | Grade 39.00 | At Risk
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 9
+
+Academic Summary Report
+Total student records: 12
+Average grade: 68.88
+Highest grade: 95.00
+Lowest grade: 39.00
+Students meeting pass threshold (50): 10
+Students below pass threshold (50): 2
+
+Custom Analysis: Academic Risk Classification
+Purpose: show grade distribution and identify students needing support.
+At Risk: 0 <= grade < 50; Needs Improvement: 50 <= grade < 60;
+Satisfactory: 60 <= grade < 80; Excellent: 80 <= grade <= 100.
+These thresholds are project rules, not official university grades.
+Category share (%) = category count / total records * 100.
+Students below 60 are flagged for academic support.
+At Risk           : 2 (16.67%)
+Needs Improvement : 2 (16.67%)
+Satisfactory      : 4 (33.33%)
+Excellent         : 4 (33.33%)
+Students needing academic support: 4
+Support: ID 1006 | Eric Habimana | Grade 55.50 | Needs Improvement
+Support: ID 1012 | Isaac Adeyemi | Grade 50.00 | Needs Improvement
+Support: ID 1004 | Samuel Mensah | Grade 48.00 | At Risk
+Support: ID 1008 | Noah Dlamini | Grade 39.00 | At Risk
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 10
+$ 
