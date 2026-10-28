@@ -73,4 +73,3 @@ The program simulates temperature, pressure, and battery-voltage devices. It man
 
 **Flow:** Device → Simulated reading → Monitoring callback → Normal/alert status → Summary
 
-**Note:** Project 3 details should be updated to match the final implementation.
