@@ -1,4 +1,4 @@
-#include <errno.h>
+#include <errno.h> /*serves as a flag for error reporting*/
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
