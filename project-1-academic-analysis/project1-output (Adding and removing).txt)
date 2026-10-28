@@ -1,0 +1,38 @@
+$ ./project1_output 
+Your student ID (for the output header): 2005
+
+Student ID: 2005
+Project: Dynamic Academic Performance and Risk Analysis Engine
+Custom Analysis: Academic Risk Classification
+Initialization complete: 12 student records loaded.
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 1
+Student ID: 2006
+Full name: Moutiath Djobosso
+Course: Animal studies 
+Grade (0-100): 67
+Student added successfully. Total records: 13
+
+1. Add a student
+2. Display students
+3. Sort students
+4. Calculate average grade
+5. Find top-performing students
+6. Search students
+7. Remove a student
+8. Run academic risk analysis
+9. Display summary report
+10. Exit
+Choice: 7
+Student ID to remove: 2006
+Student 2006 removed. Total records: 12
