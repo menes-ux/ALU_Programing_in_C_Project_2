@@ -77,3 +77,54 @@ static int read_choice(const char *prompt, int maximum, int *choice)
     }
     return 0;
 }
+
+/* File input ends at EOF. Pasted input ends at an empty line or EOF. */
+static char *read_text(FILE *stream, int stop_at_empty_line)
+{
+    size_t capacity = 256;
+    size_t length = 0;
+    char *text = malloc(capacity);
+    if (text == NULL) {
+        fputs("Could not allocate memory for the text.\n", stderr);
+        return NULL;
+    }
+
+    int character;
+    while ((character = fgetc(stream)) != EOF) {
+        if (character == '\r') {
+            continue;
+        }
+        if (stop_at_empty_line && character == '\n' &&
+            (length == 0 || text[length - 1] == '\n')) {
+            break;
+        }
+        if (character == '\0') {
+            fputs("Text cannot contain a null character.\n", stderr);
+            free(text);
+            return NULL;
+        }
+        if (length == capacity - 1) {
+            if (capacity > (size_t)-1 / 2) {
+                fputs("The text is too large to store.\n", stderr);
+                free(text);
+                return NULL;
+            }
+            char *resized = realloc(text, capacity * 2);
+            if (resized == NULL) {
+                fputs("Could not grow the text buffer.\n", stderr);
+                free(text);
+                return NULL;
+            }
+            text = resized;
+            capacity *= 2;
+        }
+        text[length++] = (char)character;
+    }
+    if (ferror(stream)) {
+        fputs("An error occurred while reading the text.\n", stderr);
+        free(text);
+        return NULL;
+    }
+    text[length] = '\0';
+    return text;
+}
