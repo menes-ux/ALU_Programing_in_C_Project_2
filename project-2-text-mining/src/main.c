@@ -128,3 +128,110 @@ static char *read_text(FILE *stream, int stop_at_empty_line)
     text[length] = '\0';
     return text;
 }
+
+/* Replace the current analysis only after the new statistics are complete.
+   On success, this function takes ownership of text; on failure, the caller
+   must free text. Words longer than 39 letters reject the whole new text. */
+static int analyse_text(TextAnalysis *analysis, char *text, const char *source)
+{
+    WordStat *words = NULL;
+    size_t total = 0;
+    size_t distinct = 0;
+    const char *current = text;
+
+    while (*current != '\0') {
+        while (*current != '\0' && !is_letter(*current)) {
+            ++current;
+        }
+        if (*current == '\0') {
+            break;
+        }
+        char word[40];
+        size_t length = 0;
+        while (is_letter(*current)) {
+            if (length < sizeof(word) - 1) {
+                word[length] = (*current >= 'A' && *current <= 'Z')
+                                   ? (char)(*current - 'A' + 'a') : *current;
+            }
+            ++length;
+            ++current;
+        }
+        if (length >= sizeof(word)) {
+            puts("Text rejected: a word exceeds the 39-letter limit.");
+            free(words);
+            return 0;
+        }
+        word[length] = '\0';
+
+        size_t index = 0;
+        while (index < distinct && strcmp(words[index].name, word) != 0) {
+            ++index;
+        }
+        if (index == distinct) {
+            if (distinct >= (size_t)-1 / sizeof(WordStat)) {
+                fputs("Too many distinct words to store.\n", stderr);
+                free(words);
+                return 0;
+            }
+            WordStat *resized = realloc(words, (distinct + 1) * sizeof(WordStat));
+            if (resized == NULL) {
+                fputs("Could not allocate memory for word statistics.\n", stderr);
+                free(words);
+                return 0;
+            }
+            words = resized;
+            strcpy(words[distinct].name, word);
+            words[distinct].count = 1;
+            ++distinct;
+        } else {
+            ++words[index].count;
+        }
+        ++total;
+    }
+
+    free(analysis->text);
+    free(analysis->words);
+    analysis->text = text;
+    analysis->words = words;
+    analysis->total = total;
+    analysis->distinct = distinct;
+    strcpy(analysis->source, source);
+    return 1;
+}
+
+static int load_sample(TextAnalysis *analysis)
+{
+    const char *paths[] = {
+        "project-2-text-mining/data/sample_text.txt",
+        "data/sample_text.txt",
+        "../data/sample_text.txt"
+    };
+    FILE *file = NULL;
+    for (size_t i = 0; i < sizeof(paths) / sizeof(paths[0]); ++i) {
+        file = fopen(paths[i], "r");
+        if (file != NULL) {
+            break;
+        }
+    }
+    if (file == NULL) {
+        fputs("Could not open data/sample_text.txt. Run from the repository root,\n"
+              "project-2-text-mining, or its src directory.\n", stderr);
+        return 0;
+    }
+    char *text = read_text(file, 0);
+    fclose(file);
+    if (text == NULL) {
+        return 0;
+    }
+    if (!analyse_text(analysis, text,
+                      "Nineteen Eighty-Four (1984)\nAuthor: George Orwell\n"
+                      "Publication year: 1949\nSection: Part One, Chapter 1\nPDF page: 5")) {
+        free(text);
+        return 0;
+    }
+    if (analysis->total < 150) {
+        fputs("The published sample must contain at least 150 words.\n", stderr);
+        return 0;
+    }
+    return 1;
+}
