@@ -1,0 +1,429 @@
+$ ./project2-output 
+Your student ID: 2005
+
+Student ID: 2005
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Nineteen Eighty-Four (1984)
+Author: George Orwell
+Publication year: 1949
+Section: Part One, Chapter 1
+PDF page: 5
+Custom Analysis: Lexical Diversity Score
+
+Word rules: words are sequences of English letters A-Z or a-z.
+Case is ignored. Punctuation, apostrophes, hyphens, numbers, and
+whitespace separate words: 'don't' becomes 'don' and 't';
+'thirty-nine' becomes 'thirty' and 'nine'. Other characters separate words.
+Words longer than 39 letters reject the entire new paragraph.
+
+Loaded paragraph (179 words):
+The hallway smelt of boiled cabbage and old rag mats. At one
+end of it a coloured poster, too large for indoor display, had been
+tacked to the wall. It depicted simply an enormous face, more
+than a metre wide: the face of a man of about forty-five, with a
+heavy black moustache and ruggedly handsome features. Winston
+made for the stairs. It was no use trying the lift. Even at the best
+of times it was seldom working, and at present the electric current
+was cut off during daylight hours. It was part of the economy
+drive in preparation for Hate Week. The flat was seven flights up,
+and Winston, who was thirty-nine and had a varicose ulcer above
+his right ankle, went slowly, resting several times on the way. On
+each landing, opposite the lift-shaft, the poster with the enormous
+face gazed from the wall. It was one of those pictures which are so
+contrived that the eyes follow you about when you move. BIG
+BROTHER IS WATCHING YOU, the caption beneath it ran.
+
+
+1. Count words
+2. Find longest word
+3. Find most frequent word
+4. Display word statistics
+5. Sort word statistics
+6. Search word
+7. Display text summary
+8. Lexical Diversity Score
+9. Inspect memory addresses
+10. Enter a new paragraph
+11. Exit
+Choice: 1
+Total words: 179
+Distinct words: 119
+
+1. Count words
+2. Find longest word
+3. Find most frequent word
+4. Display word statistics
+5. Sort word statistics
+6. Search word
+7. Display text summary
+8. Lexical Diversity Score
+9. Inspect memory addresses
+10. Enter a new paragraph
+11. Exit
+Choice: 2
+Longest word(s), 11 letters:
+preparation
+
+1. Count words
+2. Find longest word
+3. Find most frequent word
+4. Display word statistics
+5. Sort word statistics
+6. Search word
+7. Display text summary
+8. Lexical Diversity Score
+9. Inspect memory addresses
+10. Enter a new paragraph
+11. Exit
+Choice: 3
+Most frequent word(s), 16 occurrence(s) each:
+the
+
+1. Count words
+2. Find longest word
+3. Find most frequent word
+4. Display word statistics
+5. Sort word statistics
+6. Search word
+7. Display text summary
+8. Lexical Diversity Score
+9. Inspect memory addresses
+10. Enter a new paragraph
+11. Exit
+Choice: 4
+
+Word                                    | Frequency
+the                                     | 16
+hallway                                 | 1
+smelt                                   | 1
+of                                      | 7
+boiled                                  | 1
+cabbage                                 | 1
+and                                     | 5
+old                                     | 1
+rag                                     | 1
+mats                                    | 1
+at                                      | 3
+one                                     | 2
+end                                     | 1
+it                                      | 7
+a                                       | 5
+coloured                                | 1
+poster                                  | 2
+too                                     | 1
+large                                   | 1
+for                                     | 3
+indoor                                  | 1
+display                                 | 1
+had                                     | 2
+been                                    | 1
+tacked                                  | 1
+to                                      | 1
+wall                                    | 2
+depicted                                | 1
+simply                                  | 1
+an                                      | 1
+enormous                                | 2
+face                                    | 3
+more                                    | 1
+than                                    | 1
+metre                                   | 1
+wide                                    | 1
+man                                     | 1
+about                                   | 2
+forty                                   | 1
+five                                    | 1
+with                                    | 2
+heavy                                   | 1
+black                                   | 1
+moustache                               | 1
+ruggedly                                | 1
+handsome                                | 1
+features                                | 1
+winston                                 | 2
+made                                    | 1
+stairs                                  | 1
+was                                     | 7
+no                                      | 1
+use                                     | 1
+trying                                  | 1
+lift                                    | 2
+even                                    | 1
+best                                    | 1
+times                                   | 2
+seldom                                  | 1
+working                                 | 1
+present                                 | 1
+electric                                | 1
+current                                 | 1
+cut                                     | 1
+off                                     | 1
+during                                  | 1
+daylight                                | 1
+hours                                   | 1
+part                                    | 1
+economy                                 | 1
+drive                                   | 1
+in                                      | 1
+preparation                             | 1
+hate                                    | 1
+week                                    | 1
+flat                                    | 1
+seven                                   | 1
+flights                                 | 1
+up                                      | 1
+who                                     | 1
+thirty                                  | 1
+nine                                    | 1
+varicose                                | 1
+ulcer                                   | 1
+above                                   | 1
+his                                     | 1
+right                                   | 1
+ankle                                   | 1
+went                                    | 1
+slowly                                  | 1
+resting                                 | 1
+several                                 | 1
+on                                      | 2
+way                                     | 1
+each                                    | 1
+landing                                 | 1
+opposite                                | 1
+shaft                                   | 1
+gazed                                   | 1
+from                                    | 1
+those                                   | 1
+pictures                                | 1
+which                                   | 1
+are                                     | 1
+so                                      | 1
+contrived                               | 1
+that                                    | 1
+eyes                                    | 1
+follow                                  | 1
+you                                     | 3
+when                                    | 1
+move                                    | 1
+big                                     | 1
+brother                                 | 1
+is                                      | 1
+watching                                | 1
+caption                                 | 1
+beneath                                 | 1
+ran                                     | 1
+
+1. Count words
+2. Find longest word
+3. Find most frequent word
+4. Display word statistics
+5. Sort word statistics
+6. Search word
+7. Display text summary
+8. Lexical Diversity Score
+9. Inspect memory addresses
+10. Enter a new paragraph
+11. Exit
+Choice: 5
+Sort by 1 = Alphabetical, 2 = Frequency (highest first): 1
+
+Word                                    | Frequency
+a                                       | 5
+about                                   | 2
+above                                   | 1
+an                                      | 1
+and                                     | 5
+ankle                                   | 1
+are                                     | 1
+at                                      | 3
+been                                    | 1
+beneath                                 | 1
+best                                    | 1
+big                                     | 1
+black                                   | 1
+boiled                                  | 1
+brother                                 | 1
+cabbage                                 | 1
+caption                                 | 1
+coloured                                | 1
+contrived                               | 1
+current                                 | 1
+cut                                     | 1
+daylight                                | 1
+depicted                                | 1
+display                                 | 1
+drive                                   | 1
+during                                  | 1
+each                                    | 1
+economy                                 | 1
+electric                                | 1
+end                                     | 1
+enormous                                | 2
+even                                    | 1
+eyes                                    | 1
+face                                    | 3
+features                                | 1
+five                                    | 1
+flat                                    | 1
+flights                                 | 1
+follow                                  | 1
+for                                     | 3
+forty                                   | 1
+from                                    | 1
+gazed                                   | 1
+had                                     | 2
+hallway                                 | 1
+handsome                                | 1
+hate                                    | 1
+heavy                                   | 1
+his                                     | 1
+hours                                   | 1
+in                                      | 1
+indoor                                  | 1
+is                                      | 1
+it                                      | 7
+landing                                 | 1
+large                                   | 1
+lift                                    | 2
+made                                    | 1
+man                                     | 1
+mats                                    | 1
+metre                                   | 1
+more                                    | 1
+moustache                               | 1
+move                                    | 1
+nine                                    | 1
+no                                      | 1
+of                                      | 7
+off                                     | 1
+old                                     | 1
+on                                      | 2
+one                                     | 2
+opposite                                | 1
+part                                    | 1
+pictures                                | 1
+poster                                  | 2
+preparation                             | 1
+present                                 | 1
+rag                                     | 1
+ran                                     | 1
+resting                                 | 1
+right                                   | 1
+ruggedly                                | 1
+seldom                                  | 1
+seven                                   | 1
+several                                 | 1
+shaft                                   | 1
+simply                                  | 1
+slowly                                  | 1
+smelt                                   | 1
+so                                      | 1
+stairs                                  | 1
+tacked                                  | 1
+than                                    | 1
+that                                    | 1
+the                                     | 16
+thirty                                  | 1
+those                                   | 1
+times                                   | 2
+to                                      | 1
+too                                     | 1
+trying                                  | 1
+ulcer                                   | 1
+up                                      | 1
+use                                     | 1
+varicose                                | 1
+wall                                    | 2
+was                                     | 7
+watching                                | 1
+way                                     | 1
+week                                    | 1
+went                                    | 1
+when                                    | 1
+which                                   | 1
+who                                     | 1
+wide                                    | 1
+winston                                 | 2
+with                                    | 2
+working                                 | 1
+you                                     | 3
+
+1. Count words
+2. Find longest word
+3. Find most frequent word
+4. Display word statistics
+5. Sort word statistics
+6. Search word
+7. Display text summary
+8. Lexical Diversity Score
+9. Inspect memory addresses
+10. Enter a new paragraph
+11. Exit
+Choice: 6
+Word to search for (letters only): the
+the: 16 occurrence(s)
+
+1. Count words
+2. Find longest word
+3. Find most frequent word
+4. Display word statistics
+5. Sort word statistics
+6. Search word
+7. Display text summary
+8. Lexical Diversity Score
+9. Inspect memory addresses
+10. Enter a new paragraph
+11. Exit
+Choice: 7
+
+Text Summary
+Source: Nineteen Eighty-Four (1984)
+Author: George Orwell
+Publication year: 1949
+Section: Part One, Chapter 1
+PDF page: 5
+Total words: 179
+Distinct words: 119
+Average word length: 4.25 letters
+Longest word(s), 11 letters:
+preparation
+Most frequent word(s), 16 occurrence(s) each:
+the
+
+Custom Analysis: Lexical Diversity Score
+Formula: distinct words / total words.
+Higher scores indicate more varied vocabulary in this passage;
+repeating words reduces the score. Text length also affects the score.
+Lexical Diversity Score: 0.6648 (66.48%)
+
+1. Count words
+2. Find longest word
+3. Find most frequent word
+4. Display word statistics
+5. Sort word statistics
+6. Search word
+7. Display text summary
+8. Lexical Diversity Score
+9. Inspect memory addresses
+10. Enter a new paragraph
+11. Exit
+Choice: 9
+
+Memory Inspection
+Text buffer: 0x564d0edc5dc0 (start of the stored paragraph)
+Word statistics array: 0x564d0edc61d0 (start of the word records)
+Selected word-stat entry: 0x564d0edc6ce0 (record for 'mats')
+
+1. Count words
+2. Find longest word
+3. Find most frequent word
+4. Display word statistics
+5. Sort word statistics
+6. Search word
+7. Display text summary
+8. Lexical Diversity Score
+9. Inspect memory addresses
+10. Enter a new paragraph
+11. Exit
+Choice: 11
+$ 
