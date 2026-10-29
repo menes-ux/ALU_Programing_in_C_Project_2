@@ -1,0 +1,81 @@
+$ ./a.out 
+Your student ID: 2005
+
+Student ID: 2005
+Project: Dynamic IoT Event Monitoring and Callback Engine
+Custom Callback: Sensor Drift Detection
+Simulation ranges: temperature -10 to 60 C; pressure 70 to 130 kPa;
+battery voltage 2.50 to 4.50 V.
+Normal ranges: temperature 0 to 40 C; pressure 90 to 110 kPa;
+battery voltage 3.30 to 4.20 V. Range endpoints are normal.
+Drift alert: change > 8 C, > 12 kPa, or > 0.40 V between readings.
+Three sample devices are registered. Generate readings, then process them.
+
+1. Register a device
+2. Display registered devices
+3. Remove a device
+4. Generate simulated readings
+5. Process pending readings
+6. Display latest alerts
+7. Generate monitoring summary
+8. Exit
+Choice: 1
+Device ID: 999
+Device name: Test sensor 
+Type (1 = Temperature, 2 = Pressure, 3 = Battery): 1
+Device registered. Total devices: 4
+
+1. Register a device
+2. Display registered devices
+3. Remove a device
+4. Generate simulated readings
+5. Process pending readings
+6. Display latest alerts
+7. Generate monitoring summary
+8. Exit
+Choice: 2
+
+Registered devices (latest processed readings):
+ID 101 | Room temperature | Temperature | Awaiting first reading
+ID 102 | Air pressure | Pressure | Awaiting first reading
+ID 103 | Battery pack | Battery voltage | Awaiting first reading
+ID 999 | Test sensor | Temperature | Awaiting first reading
+Total devices: 4
+
+1. Register a device
+2. Display registered devices
+3. Remove a device
+4. Generate simulated readings
+5. Process pending readings
+6. Display latest alerts
+7. Generate monitoring summary
+8. Exit
+Choice: 3
+Device ID to remove: 999
+Device 999 removed. Total devices: 3. Pending readings discarded: 0
+
+1. Register a device
+2. Display registered devices
+3. Remove a device
+4. Generate simulated readings
+5. Process pending readings
+6. Display latest alerts
+7. Generate monitoring summary
+8. Exit
+Choice: 2
+
+Registered devices (latest processed readings):
+ID 101 | Room temperature | Temperature | Awaiting first reading
+ID 102 | Air pressure | Pressure | Awaiting first reading
+ID 103 | Battery pack | Battery voltage | Awaiting first reading
+Total devices: 3
+
+1. Register a device
+2. Display registered devices
+3. Remove a device
+4. Generate simulated readings
+5. Process pending readings
+6. Display latest alerts
+7. Generate monitoring summary
+8. Exit
+Choice: 
