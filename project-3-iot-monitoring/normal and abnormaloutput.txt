@@ -1,0 +1,12 @@
+
+1. NORMAL PRESSURE READING
+ID 102 | Air pressure | Pressure | 93.00 kPa | NORMAL | Callbacks: pressure_monitor, sensor_drift_detection
+
+2. NORMAL BATTERY READING
+ID 103 | Battery pack | Battery voltage | 3.75 V | NORMAL | Callbacks: battery_monitor, sensor_drift_detection
+
+3. ABNORMAL TEMPERATURE READING
+ID 101 | Room temperature | Temperature | 56.80 C | ABNORMAL | Callbacks: temperature_monitor, sensor_drift_detection
+
+4. TEMPERATURE ALERT
+ID 101 | Room temperature | Temperature | 56.80 C | ALERT: outside operating range 0.00 to 40.00 C | Callback: temperature_monitor
