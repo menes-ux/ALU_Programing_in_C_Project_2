@@ -1,0 +1,88 @@
+$ ./project3-ouput 
+Your student ID: 2005
+
+Student ID: 2005
+Project: Dynamic IoT Event Monitoring and Callback Engine
+Custom Callback: Sensor Drift Detection
+Simulation ranges: temperature -10 to 60 C; pressure 70 to 130 kPa;
+battery voltage 2.50 to 4.50 V.
+Normal ranges: temperature 0 to 40 C; pressure 90 to 110 kPa;
+battery voltage 3.30 to 4.20 V. Range endpoints are normal.
+Drift alert: change > 8 C, > 12 kPa, or > 0.40 V between readings.
+Three sample devices are registered. Generate readings, then process them.
+
+1. Register a device
+2. Display registered devices
+3. Remove a device
+4. Generate simulated readings
+5. Process pending readings
+6. Display latest alerts
+7. Generate monitoring summary
+8. Exit
+Choice: +4
+
+Generated readings:
+ID 101 | Room temperature | Temperature | 20.30 C | Pending processing
+ID 102 | Air pressure | Pressure | 78.00 kPa | Pending processing
+ID 103 | Battery pack | Battery voltage | 3.59 V | Pending processing
+ID 101 | Room temperature | Temperature | 40.00 C | Pending processing
+ID 102 | Air pressure | Pressure | 113.00 kPa | Pending processing
+ID 103 | Battery pack | Battery voltage | 3.42 V | Pending processing
+ID 101 | Room temperature | Temperature | -3.10 C | Pending processing
+ID 102 | Air pressure | Pressure | 96.00 kPa | Pending processing
+ID 103 | Battery pack | Battery voltage | 2.98 V | Pending processing
+ID 101 | Room temperature | Temperature | 44.00 C | Pending processing
+ID 102 | Air pressure | Pressure | 85.00 kPa | Pending processing
+ID 103 | Battery pack | Battery voltage | 4.22 V | Pending processing
+12 readings generated. Choose option 5 to process them.
+
+1. Register a device
+2. Display registered devices
+3. Remove a device
+4. Generate simulated readings
+5. Process pending readings
+6. Display latest alerts
+7. Generate monitoring summary
+8. Exit
+Choice: 5
+
+Processing readings through device and drift callbacks:
+ID 101 | Room temperature | Temperature | 20.30 C | NORMAL | Callbacks: temperature_monitor, sensor_drift_detection
+  Drift check: first reading establishes this device's baseline.
+ID 102 | Air pressure | Pressure | 78.00 kPa | ABNORMAL | Callbacks: pressure_monitor, sensor_drift_detection
+  Drift check: first reading establishes this device's baseline.
+ID 102 | Air pressure | Pressure | 78.00 kPa | ALERT: outside operating range 90.00 to 110.00 kPa | Callback: pressure_monitor
+ID 103 | Battery pack | Battery voltage | 3.59 V | NORMAL | Callbacks: battery_monitor, sensor_drift_detection
+  Drift check: first reading establishes this device's baseline.
+ID 101 | Room temperature | Temperature | 40.00 C | ABNORMAL | Callbacks: temperature_monitor, sensor_drift_detection
+ID 101 | Room temperature | Temperature | 40.00 C | ALERT: change 19.70 C from previous 20.30 C; maximum allowed change 8.00 C | Callback: sensor_drift_detection
+ID 102 | Air pressure | Pressure | 113.00 kPa | ABNORMAL | Callbacks: pressure_monitor, sensor_drift_detection
+ID 102 | Air pressure | Pressure | 113.00 kPa | ALERT: outside operating range 90.00 to 110.00 kPa | Callback: pressure_monitor
+ID 102 | Air pressure | Pressure | 113.00 kPa | ALERT: change 35.00 kPa from previous 78.00 kPa; maximum allowed change 12.00 kPa | Callback: sensor_drift_detection
+ID 103 | Battery pack | Battery voltage | 3.42 V | NORMAL | Callbacks: battery_monitor, sensor_drift_detection
+ID 101 | Room temperature | Temperature | -3.10 C | ABNORMAL | Callbacks: temperature_monitor, sensor_drift_detection
+ID 101 | Room temperature | Temperature | -3.10 C | ALERT: outside operating range 0.00 to 40.00 C | Callback: temperature_monitor
+ID 101 | Room temperature | Temperature | -3.10 C | ALERT: change 43.10 C from previous 40.00 C; maximum allowed change 8.00 C | Callback: sensor_drift_detection
+ID 102 | Air pressure | Pressure | 96.00 kPa | ABNORMAL | Callbacks: pressure_monitor, sensor_drift_detection
+ID 102 | Air pressure | Pressure | 96.00 kPa | ALERT: change 17.00 kPa from previous 113.00 kPa; maximum allowed change 12.00 kPa | Callback: sensor_drift_detection
+ID 103 | Battery pack | Battery voltage | 2.98 V | ABNORMAL | Callbacks: battery_monitor, sensor_drift_detection
+ID 103 | Battery pack | Battery voltage | 2.98 V | ALERT: outside operating range 3.30 to 4.20 V | Callback: battery_monitor
+ID 103 | Battery pack | Battery voltage | 2.98 V | ALERT: change 0.44 V from previous 3.42 V; maximum allowed change 0.40 V | Callback: sensor_drift_detection
+ID 101 | Room temperature | Temperature | 44.00 C | ABNORMAL | Callbacks: temperature_monitor, sensor_drift_detection
+ID 101 | Room temperature | Temperature | 44.00 C | ALERT: outside operating range 0.00 to 40.00 C | Callback: temperature_monitor
+ID 101 | Room temperature | Temperature | 44.00 C | ALERT: change 47.10 C from previous -3.10 C; maximum allowed change 8.00 C | Callback: sensor_drift_detection
+ID 102 | Air pressure | Pressure | 85.00 kPa | ABNORMAL | Callbacks: pressure_monitor, sensor_drift_detection
+ID 102 | Air pressure | Pressure | 85.00 kPa | ALERT: outside operating range 90.00 to 110.00 kPa | Callback: pressure_monitor
+ID 103 | Battery pack | Battery voltage | 4.22 V | ABNORMAL | Callbacks: battery_monitor, sensor_drift_detection
+ID 103 | Battery pack | Battery voltage | 4.22 V | ALERT: outside operating range 3.30 to 4.20 V | Callback: battery_monitor
+ID 103 | Battery pack | Battery voltage | 4.22 V | ALERT: change 1.24 V from previous 2.98 V; maximum allowed change 0.40 V | Callback: sensor_drift_detection
+
+1. Register a device
+2. Display registered devices
+3. Remove a device
+4. Generate simulated readings
+5. Process pending readings
+6. Display latest alerts
+7. Generate monitoring summary
+8. Exit
+Choice: 
